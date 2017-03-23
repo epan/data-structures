@@ -16,13 +16,12 @@ var Queue = function() {
     var lastKey = Object.keys(storage);
     lastKey = parseInt(lastKey[lastKey.length - 1]);
     var remove; 
-    debugger;
-    for (var i=0; i <= lastKey; i++) {
+    for (var i = 0; i <= lastKey; i++) {
       if (storage[i]) {
         remove = storage[i];
         delete storage[i];
         break;
-      };
+      }
     }
     return remove;
   };
