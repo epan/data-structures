@@ -1,8 +1,20 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  var obj = Object.create(Stack.prototype);
+  obj.storage = {};
+  obj.index = 0;
+  return obj;
 };
 
 var stackMethods = {};
 
+Stack.prototype.push = function (value) {
+  // body...
+}
 
+Stack.prototype.pop = function () {
+  // body...
+}
+
+Stack.prototype.size = function () {
+  return Object.keys(this.storage).length;
+}
