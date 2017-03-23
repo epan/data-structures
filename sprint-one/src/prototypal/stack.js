@@ -8,7 +8,8 @@ var Stack = function() {
 var stackMethods = {};
 
 Stack.prototype.push = function (value) {
-  // body...
+  this.storage[this.index] = value;
+  this.index++;
 }
 
 Stack.prototype.pop = function () {
