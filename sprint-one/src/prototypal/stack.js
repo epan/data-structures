@@ -1,5 +1,5 @@
 var Stack = function() {
-  var obj = Object.create(Stack.prototype);
+  var obj = Object.create(stackMethods);
   obj.storage = {};
   obj.index = 0;
   return obj;
@@ -7,15 +7,18 @@ var Stack = function() {
 
 var stackMethods = {};
 
-Stack.prototype.push = function (value) {
+stackMethods.push = function (value) {
   this.storage[this.index] = value;
   this.index++;
 }
 
-Stack.prototype.pop = function () {
-  // body...
+stackMethods.pop = function () {
+  var removed = this.storage[this.index - 1];
+  delete this.storage[this.index - 1];
+  this.index--;
+  return removed;
 }
 
-Stack.prototype.size = function () {
+stackMethods.size = function () {
   return Object.keys(this.storage).length;
 }
