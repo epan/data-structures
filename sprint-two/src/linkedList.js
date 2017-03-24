@@ -2,7 +2,7 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-  list.storage=[];
+  list.storage = [];
 
   list.addToTail = function(value) {
     var newNode = Node(value);
@@ -25,6 +25,7 @@ var LinkedList = function() {
     } else {
       list.head = list.storage[0];
     }
+    
     return output.value;
   };
 
