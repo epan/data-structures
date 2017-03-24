@@ -29,6 +29,9 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    return list.storage.reduce(function (found, obj) {
+      return found || obj.value === target;
+    }, false);
   };
 
   return list;
@@ -46,23 +49,7 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-// var newNode = {'value': 4, 'next': null}
 
-
-
-// var list {
-//   'tail': null
-// }
-
-// var list {
-//   'tail': {
-//     'next': 4
-//   }
-// }
-
-// var list {
-//   'tail': {
-//     'value': 4
-//     'next': null
-//   }
-// }
+// Complexity of .addToTail: Constant O(1)
+// Complexity of .removeHead: Constant O(1)
+// Complexity of .contains: Linear O(n)
