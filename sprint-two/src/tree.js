@@ -15,6 +15,7 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  // TODO: Improve the time complexity here
   var output = false;
   if (target === this.value) {
     return true;
