@@ -28,8 +28,26 @@ binTreeMethods.insert = function(value) {
   }
 };
 
-binTreeMethods.contains = function() {
+binTreeMethods.contains = function(query) {
+  if (query === this.value) {
+    return true;
+  }
 
+  if (query > this.value) {
+    if (!this.right) {
+      return false;
+    } else {
+      return this.right.contains(query);
+    }
+  }
+
+  if (query < this.value) {
+    if (!this.left) {
+      return false;
+    } else {
+      return this.left.contains(query);
+    }
+  }
 };
 
 binTreeMethods.depthFirstLog = function() {
