@@ -6,15 +6,20 @@ var HashTable = function() {
   this._storage = LimitedArray(this._limit);
 
   for (var i = 0; i < this._limit; i++) {
-    this._storage[i] = [];
+    this._storage.set(i, []);
   }
 };
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var oldBucket = this._storage[index];
-  oldBucket.push([k, v]);
-  this._storage.set(index, oldBucket);
+  var currentBucket = this._storage.get(index);
+  for (var i = 0; i < currentBucket.length; i++) {
+    if (currentBucket[i][0] === k) {
+      currentBucket.splice(i, 1);
+    }
+  }
+  currentBucket.push([k, v]);
+  this._storage.set(index, currentBucket);
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -24,24 +29,24 @@ HashTable.prototype.retrieve = function(k) {
   for (var i = 0; i < bucket.length; i++) {
     if (bucket[i][0] === k) {
       result = bucket[i][1];
+      break;
     }
   }
+
   return result;
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  var originBucket = this._storage[index];
+  var originBucket = this._storage.get(index);
   for (var i = 0; i < originBucket.length; i++) {
     if (k === originBucket[i][0]) {
-      var tupleIndex = i;
+      originBucket.splice(i, 1);
+      break;
     }
   }
-  originBucket.splice(tupleIndex, 1);
   this._storage.set(index, originBucket);
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
