@@ -16,6 +16,10 @@ describe('linkedList', function() {
     expect(linkedList.contains).to.be.a('function');
   });
 
+  it('should not have more than a head, tail and the 3 methods', function() {
+    expect(Object.keys(linkedList).length).to.equal(5);
+  });
+
   it('should designate a new tail when new nodes are added', function() {
     linkedList.addToTail(4);
     expect(linkedList.tail.value).to.equal(4);
